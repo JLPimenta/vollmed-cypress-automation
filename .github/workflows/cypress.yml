@@ -10,8 +10,6 @@ jobs:
       fail-fast: false
     steps:
       - name: Checkout
-        uses: actions/checkout@v4      
-      - name: Checkout
         uses: actions/checkout@v4
         with: 
           path: backend   
@@ -26,15 +24,16 @@ jobs:
           done
           echo "Server is running successfully."
         working-directory: backend
+        
       - name: Start Web App FrontEnd
         run: |
           cd frontend
           npm install
-          npm start &        
+          npm start & 
+
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v6
         with:
-          spec: |
-            cypress/e2e/cadastro-sucesso.cy.js
-            cypress/e2e/dashboard.cy.js
+          build: npm run build
+          start: npm start
           wait-on: 'http://localhost:3000,http://localhost:8080'
