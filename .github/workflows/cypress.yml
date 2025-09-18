@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with: 
-          path: backend      
+          path: backend/3745-cypress-volserver      
       - name: Start Server BackEnd
         run: |
           cd backend/3745-cypress-volserver
@@ -25,7 +25,7 @@ jobs:
             sleep 1
           done
           echo "Server is running successfully."
-        working-directory: backend
+        working-directory: backend/3745-cypress-volserver
       - name: Start Web App FrontEnd
         run: |
           cd frontend/vollmedclient
