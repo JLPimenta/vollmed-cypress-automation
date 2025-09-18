@@ -17,7 +17,7 @@ jobs:
           path: backend      
       - name: Start Server BackEnd
         run: |
-          cd backend
+          cd backend/3745-cypress-volserver
           npm install
           npm start &
           until [ "$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080)" == "200" ]; do
@@ -28,7 +28,7 @@ jobs:
         working-directory: backend
       - name: Start Web App FrontEnd
         run: |
-          cd web
+          cd frontend/vollmedclient
           npm install
           npm start &        
       - name: Run Cypress Tests
