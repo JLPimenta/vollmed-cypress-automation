@@ -14,10 +14,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with: 
-          path: server      
+          path: backend   
       - name: Start Server BackEnd
         run: |
-          cd server
+          cd backend
           npm install
           npm start &
           until [ "$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080)" == "200" ]; do
@@ -25,10 +25,10 @@ jobs:
             sleep 1
           done
           echo "Server is running successfully."
-        working-directory: server
+        working-directory: backend
       - name: Start Web App FrontEnd
         run: |
-          cd web
+          cd frontend/vollmedclient
           npm install
           npm start &        
       - name: Run Cypress Tests
