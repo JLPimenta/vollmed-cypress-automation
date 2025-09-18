@@ -28,7 +28,7 @@ jobs:
         working-directory: backend
       - name: Start Web App FrontEnd
         run: |
-          cd frontend/vollmedclient
+          cd frontend
           npm install
           npm start &        
       - name: Run Cypress Tests
